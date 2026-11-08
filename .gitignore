@@ -1,0 +1,9 @@
+bin/
+obj/
+.vs/
+*.user
+*.mdf
+*.ldf
+*.db
+Content/Lekcije/
+Content/Vezbe/

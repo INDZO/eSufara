@@ -1,0 +1,60 @@
+<Page x:Class="eSufara.View.Pages.ExercisesView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="ExercisesView">
+
+    <Grid Margin="32">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <DockPanel Margin="0,0,0,18">
+            <TextBlock Text="Vežbe"
+                       FontSize="32"
+                       FontWeight="Bold"
+                       Foreground="{StaticResource BrandBrush}"
+                       DockPanel.Dock="Left"/>
+            <Button x:Name="btnOpenExercise"
+                    Content="Otvori"
+                    Width="96"
+                    HorizontalAlignment="Right"
+                    DockPanel.Dock="Right"
+                    Click="btnOpenExercise_Click"/>
+        </DockPanel>
+
+        <CheckBox x:Name="cbOnlyNotPassed"
+                  Content="Prikaži samo nepređene"
+                  Margin="0,0,0,12"
+                  Grid.Row="1"
+                  Checked="cbOnlyNotPassed_Changed"
+                  Unchecked="cbOnlyNotPassed_Changed"/>
+
+        <ListView x:Name="lvExercises"
+                  Grid.Row="2"
+                  MouseDoubleClick="lvExercises_MouseDoubleClick">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="Background" Value="White"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="FontSize" Value="15"/>
+                    <Setter Property="Padding" Value="8"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="{StaticResource BrandBrush}"/>
+                            <Setter Property="Foreground" Value="White"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="№" Width="60" DisplayMemberBinding="{Binding Number}"/>
+                    <GridViewColumn Header="Naslov" Width="360" DisplayMemberBinding="{Binding Title}"/>
+                    <GridViewColumn Header="✓" Width="70" DisplayMemberBinding="{Binding PassedMark}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Page>

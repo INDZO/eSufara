@@ -1,0 +1,50 @@
+<Page x:Class="eSufara.View.Pages.LogInView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:eSufara.View.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="LogInView">
+
+    <Grid Margin="0,0" Width="300" Height="300">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Button x:Name="BackLI" Content="←" Width="46" Height="34" HorizontalAlignment="Left" Click="BackLI_Click"/>
+
+        <StackPanel Grid.Row="1" Margin="0,18,0,0">
+            <TextBlock Text="Korisničko ime" FontWeight="SemiBold" Margin="0,0,0,6"/>
+            <TextBox x:Name="UsernameLI" Width="264" HorizontalAlignment="Left" TabIndex="0"/>
+
+            <TextBlock Text="Lozinka" FontWeight="SemiBold" Margin="0,16,0,6"/>
+            <PasswordBox x:Name="PasswordLI" Width="264" HorizontalAlignment="Left" TabIndex="1"/>
+            <TextBlock x:Name="GreskaNeuspesnaPrijava"
+                       TextWrapping="Wrap"
+                       Text="Korisničko ime ili lozinka nisu ispravni."
+                       Foreground="#B00020"
+                       FontSize="12"
+                       Margin="0,6,0,0"
+                       Visibility="Collapsed"/>
+            <Label x:Name="GreskaPrazanUnos"
+                   Content="Unesite korisničko ime i lozinku."
+                   Foreground="#B00020"
+                   FontSize="12"
+                   Padding="0"
+                   Margin="0,8,0,0"
+                   Visibility="Collapsed"/>
+            <TextBlock x:Name="GreskaSistem"
+                       Text="Prijava trenutno nije moguća. Proverite vezu sa bazom i pokušajte ponovo."
+                       TextWrapping="Wrap"
+                       Foreground="#B00020"
+                       FontSize="12"
+                       Margin="0,8,0,0"
+                       Visibility="Collapsed"/>
+
+            <Button x:Name="LogIn" Content="Prijavi se" Width="118" HorizontalAlignment="Left" Margin="0,18,0,0" TabIndex="2" IsDefault="True" Click="LogIn_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>

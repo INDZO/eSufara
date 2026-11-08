@@ -1,0 +1,80 @@
+<Page x:Class="eSufara.View.Pages.LessonView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="LessonView">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <Grid Margin="32" MaxWidth="1040" HorizontalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <!-- sadržaj se proširuje -->
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Header -->
+            <DockPanel Grid.Row="0" Margin="0,0,0,18">
+                <Button Content="⟵ Nazad" Click="Back_Click" Width="118" Margin="0,0,14,0"/>
+                <TextBlock x:Name="txtTitle" FontSize="26" FontWeight="Bold" Foreground="{StaticResource BrandBrush}" VerticalAlignment="Center"/>
+            </DockPanel>
+
+            <!-- Slike kod lekcije 0, levo i desno iste veličine -->
+            <Grid Grid.Row="1" Name="gridLesson0" Visibility="Collapsed">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" BorderBrush="{StaticResource BorderBrushSoft}" Background="White" BorderThickness="1" CornerRadius="8" Padding="10" Margin="0,0,8,0">
+                    <Image x:Name="imgLeft0" Stretch="Uniform" />
+                </Border>
+                <Border Grid.Column="1" BorderBrush="{StaticResource BorderBrushSoft}" Background="White" BorderThickness="1" CornerRadius="8" Padding="10" Margin="8,0,0,0">
+                    <Image x:Name="imgIntroRight0" Stretch="Uniform" />
+                </Border>
+            </Grid>
+
+            <!-- Ostali slučajevi -->
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="3*" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Leva glavna slika -->
+                <Border Grid.Column="0" BorderBrush="{StaticResource BorderBrushSoft}" Background="White" BorderThickness="1" CornerRadius="8" Padding="10" Margin="0,0,18,0">
+                    <Image x:Name="imgLeft" Stretch="Uniform" />
+                </Border>
+
+                <!-- Desni sadržaj -->
+                <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Top">
+                    <StackPanel Orientation="Vertical" x:Name="rightContentPanel">
+                        <!-- Row 1 -->
+                        <StackPanel x:Name="row1Panel" Visibility="Collapsed" Margin="0,0,0,8">
+                            <Border BorderBrush="{StaticResource BorderBrushSoft}" Background="White" BorderThickness="1" CornerRadius="8" Padding="10">
+                                <Image x:Name="imgRow1" Stretch="Uniform" Loaded="RowImage_Loaded"/>
+                            </Border>
+                            <Grid x:Name="gridRow1Buttons" Margin="0,8,0,0"/>
+                        </StackPanel>
+
+                        <!-- Row 2 -->
+                        <StackPanel x:Name="row2Panel" Visibility="Collapsed" Margin="0,0,0,8">
+                            <Border BorderBrush="{StaticResource BorderBrushSoft}" Background="White" BorderThickness="1" CornerRadius="8" Padding="10">
+                                <Image x:Name="imgRow2" Stretch="Uniform" Loaded="RowImage_Loaded"/>
+                            </Border>
+                            <Grid x:Name="gridRow2Buttons" Margin="0,8,0,0"/>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+
+            <!-- Checkbox -->
+            <CheckBox x:Name="chkDone"
+                      Grid.Row="3"
+                      Content="Označi kao naučeno"
+                      HorizontalAlignment="Right"
+                      Margin="0,12,0,0"
+                      Checked="chkDone_Checked"
+                      Unchecked="chkDone_UncheckedAsync"/>
+        </Grid>
+    </ScrollViewer>
+</Page>
